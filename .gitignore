@@ -1,0 +1,16 @@
+# Live server files: passkey hash, session secret and your bookmarks
+server/config.json
+server/data.json
+server/*.tmp
+
+# Leftover copy from the merge, in case it's still around
+the thingy/
+
+# Claude Code
+CLAUDE.md
+.claude/
+
+# Windows / macOS junk
+Thumbs.db
+desktop.ini
+.DS_Store

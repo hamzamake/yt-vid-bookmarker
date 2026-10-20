@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>YouTube Bookmarks Settings</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Roboto, Arial, sans-serif;
+      background: #0f0f0f;
+      color: #f1f1f1;
+    }
+    main { max-width: 560px; margin: 48px auto; padding: 0 16px; }
+    h1 { display: flex; align-items: center; gap: 12px; font-size: 22px; margin: 0 0 24px; }
+    section {
+      background: #181818;
+      border: 1px solid #272727;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    h2 { margin: 0 0 4px; font-size: 16px; }
+    .hint { margin: 0 0 18px; color: #aaa; font-size: 13px; line-height: 1.5; }
+    .toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #272727;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .switch { position: relative; width: 40px; height: 22px; flex: none; }
+    .switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .switch span {
+      position: absolute;
+      inset: 0;
+      border-radius: 11px;
+      background: #3f3f3f;
+      transition: background .15s;
+    }
+    .switch span::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      transition: transform .15s;
+    }
+    .switch input:checked + span { background: #3ea6ff; }
+    .switch input:checked + span::after { transform: translateX(18px); }
+    .switch input:focus-visible + span { outline: 2px solid #3ea6ff; outline-offset: 2px; }
+    label.field { display: block; margin-bottom: 14px; font-size: 13px; color: #aaa; }
+    .field input {
+      display: block;
+      width: 100%;
+      margin-top: 6px;
+      padding: 9px 12px;
+      border: 1px solid #303030;
+      border-radius: 8px;
+      background: #121212;
+      color: #f1f1f1;
+      font-size: 14px;
+      outline: none;
+    }
+    .field input:focus { border-color: #3ea6ff; }
+    .passkey { position: relative; }
+    .passkey input { padding-right: 60px; }
+    #show {
+      position: absolute;
+      right: 6px;
+      bottom: 6px;
+      border: none;
+      padding: 3px 8px;
+      font-size: 12px;
+    }
+    .buttons { display: flex; gap: 10px; margin-top: 18px; }
+    button {
+      background: none;
+      border: 1px solid #3f3f3f;
+      color: #ddd;
+      border-radius: 18px;
+      padding: 7px 16px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    button:hover { color: #fff; border-color: #777; }
+    button.primary { background: #3ea6ff; border-color: #3ea6ff; color: #0f0f0f; font-weight: 600; }
+    button.primary:hover { background: #65b8ff; }
+    #message { margin: 14px 0 0; font-size: 13px; min-height: 1.3em; }
+    #status { margin-top: 16px; font-size: 13px; color: #aaa; }
+    #status a { color: #3ea6ff; }
+    .ok { color: #4caf50; }
+    .error { color: #ff6b6b; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1><img src="icons/icon48.png" alt="" width="32" height="32"> Settings</h1>
+    <section>
+      <h2>Sync to your server</h2>
+      <p class="hint">Sends your bookmarks to your own bookmark server so you can see them on its website.
+        Start it from the <b>server</b> folder with <code>node server.js</code>.</p>
+
+      <label class="toggle">
+        <span>Sync bookmarks to my server</span>
+        <span class="switch"><input id="enabled" type="checkbox"><span></span></span>
+      </label>
+
+      <label class="field">Server link
+        <input id="url" type="url" placeholder="http://localhost:3000" spellcheck="false">
+      </label>
+      <label class="field passkey">Passkey
+        <input id="passkey" type="password" placeholder="The passkey your server printed" spellcheck="false" autocomplete="off">
+        <button id="show" type="button">Show</button>
+      </label>
+
+      <div class="buttons">
+        <button id="save" class="primary">Save</button>
+        <button id="test">Test connection</button>
+      </div>
+      <p id="message"></p>
+      <div id="status"></div>
+    </section>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

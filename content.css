@@ -1,0 +1,61 @@
+/* Blue marker on the progress bar at the bookmarked time */
+.ytb-bookmark-marker {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 4px;
+  margin-left: -2px;
+  background: #1e90ff;
+  border-radius: 2px;
+  box-shadow: 0 0 4px #1e90ff;
+  z-index: 1000; /* above SponsorBlock's segment bar */
+  pointer-events: none;
+}
+
+/* Blue time display (e.g. "3:21 / 10:05") once the video is bookmarked */
+html[data-ytb-bookmarked] #movie_player .ytp-time-display,
+html[data-ytb-bookmarked] #movie_player .ytp-time-display *,
+html[data-ytb-bookmarked] #movie_player .ytp-time-current,
+html[data-ytb-bookmarked] #movie_player .ytp-time-separator,
+html[data-ytb-bookmarked] #movie_player .ytp-time-duration {
+  color: #3ea6ff !important;
+}
+
+/* Amber while you've jumped far from the bookmark and it hasn't moved yet */
+html[data-ytb-bookmarked][data-ytb-pending] #movie_player .ytp-time-display,
+html[data-ytb-bookmarked][data-ytb-pending] #movie_player .ytp-time-display *,
+html[data-ytb-bookmarked][data-ytb-pending] #movie_player .ytp-time-current,
+html[data-ytb-bookmarked][data-ytb-pending] #movie_player .ytp-time-separator,
+html[data-ytb-bookmarked][data-ytb-pending] #movie_player .ytp-time-duration {
+  color: #ffb300 !important;
+}
+html[data-ytb-pending] .ytb-bookmark-marker {
+  animation: ytb-pulse 1s ease-in-out infinite alternate;
+}
+@keyframes ytb-pulse {
+  from { opacity: 1; }
+  to { opacity: 0.35; }
+}
+
+/* Little message in the top-left of the player */
+.ytb-toast {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 70;
+  max-width: calc(100% - 24px);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border-left: 3px solid #3ea6ff;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font: 500 13px/1.4 Roboto, Arial, sans-serif;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.ytb-toast.ytb-show {
+  opacity: 1;
+  transform: none;
+}

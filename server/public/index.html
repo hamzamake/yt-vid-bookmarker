@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube Bookmarks</title>
+  <link rel="icon" href="/icon.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main id="login" hidden>
+    <form id="login-form">
+      <img src="/icon.png" alt="" width="48" height="48">
+      <h1>YouTube Bookmarks</h1>
+      <p>Enter your passkey to see your bookmarks.</p>
+      <input id="passkey" type="password" placeholder="Passkey" autocomplete="current-password" required autofocus>
+      <button type="submit">Unlock</button>
+      <p id="login-error" class="error" role="alert"></p>
+    </form>
+  </main>
+
+  <div id="app" hidden>
+    <header>
+      <div class="brand">
+        <img src="/icon.png" alt="" width="28" height="28">
+        <span>YouTube Bookmarks<span id="count"></span></span>
+      </div>
+      <input id="search" type="search" placeholder="Search bookmarks">
+      <div class="right">
+        <span id="synced"></span>
+        <button id="logout">Lock</button>
+      </div>
+    </header>
+    <form id="add-form">
+      <input id="add-url" type="url" placeholder="Paste a YouTube link to add it" autocomplete="off" required>
+      <input id="add-time" placeholder="Start at (optional)" autocomplete="off" aria-label="Start at">
+      <button type="submit">Add</button>
+      <p id="add-error" class="error" role="alert"></p>
+    </form>
+    <ul id="list"></ul>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
